@@ -35,4 +35,4 @@ def cart_detail(request):
 
     context = {}
     context['cart'] = cart
-    return render(request, 'cart/detail.html', context)
+    return render(request, 'cart/detail.html', context)  

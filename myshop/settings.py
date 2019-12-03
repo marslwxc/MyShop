@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'shop',
     'cart',
+    'orders',
+    'payment',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -131,3 +134,23 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CART_SESSION_ID = 'cart'
+
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = '770753243@qq.com' # 你的 QQ 账号
+EMAIL_HOST_PASSWORD = 'xoepjiybhebsbcie'
+EMAIL_USE_TLS = True # 这里必须是 True，否则发送不成功
+EMAIL_FROM = '770753243@qq.com' # 你的 QQ 账号
+
+BRAINTREE_MERCHANT_ID = 'k68tpw9bd8dstnwn'
+BRAINTREE_PUBLIC_KEY = 'w6ycvnf97pt34db3'
+BRAINTREE_PRIVATE_KEY = '4e9606e9ce8c43907fb7346f806f0293'
+
+from braintree import Configuration, Environment
+
+Configuration.configure(
+    Environment.Sandbox,
+    BRAINTREE_MERCHANT_ID,
+    BRAINTREE_PUBLIC_KEY,
+    BRAINTREE_PRIVATE_KEY
+)
